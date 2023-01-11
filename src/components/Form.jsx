@@ -32,7 +32,7 @@ const sendForm=async(e)=>{
     e.preventDefault()
     console.log(formData)
     try{
-      axios.post("https://greydiveback.vercel.app/votes/addvot",formData).then(e=>{alert(e.data)})
+      axios.post("https://greydiveback.vercel.app/votes/addvote",formData).then(e=>{alert(e.data)})
     }
     catch(e){
       alert(e.data)
