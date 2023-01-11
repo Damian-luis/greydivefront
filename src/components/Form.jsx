@@ -2,6 +2,8 @@ import React from "react";
 import { useContext } from "react";
 import data from "../context/contextdata"
 import axios from "axios"
+
+ 
 export const Form=()=>{
 
   const {formData}=useContext(data)
@@ -29,12 +31,12 @@ const cbHandler=(e)=>{
 const sendForm=async(e)=>{
     e.preventDefault()
     console.log(formData)
-    try{
+    /*try{
       axios.post("http://localhost:4000/votes/addvote",formData).then(e=>{alert(e.data)})
     }
     catch(e){
       alert(e.data)
-    }
+    }*/
     setFormData({
     name:"",
     lastName:"",
@@ -63,12 +65,23 @@ const sendForm=async(e)=>{
   </div>
   <div class="form-group">
     <label for="inputAddress2">Fecha de nacimiento</label>
-    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" onChange={birthDateHandler} value={formData.birthDate}/>
+    <input type="date" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" onChange={birthDateHandler} value={formData.birthDate}/>
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputCity">Pais</label>
-      <input type="text" class="form-control" id="inputCity" onChange={countryHandler} value={formData.country}/>
+      <select class="form-select" aria-label="Default select example" onChange={countryHandler} value={formData.country}>
+  <option selected>Selecciona tu pais</option>
+  <option value="argentina">Argentina</option>
+  <option value="brasil">Brasil</option>
+  <option value="chile">Chile</option>
+  <option value="colombia">Colombia</option>
+  <option value="mexico">México</option>
+  <option value="peru">Perú</option>
+  <option value="uruguay">Uruguay</option>
+  <option value="venezuela">Venezuela</option>
+  
+</select>
     </div>
     
   </div>
