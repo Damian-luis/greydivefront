@@ -2,13 +2,13 @@ import React from "react";
 import { useContext } from "react";
 import data from "../context/contextdata"
 import axios from "axios"
-
+import { useNavigate } from "react-router-dom";
  
 export const Form=()=>{
 
   const {formData}=useContext(data)
   const {setFormData}=useContext(data)
-  
+  let navigate = useNavigate(); 
   //Handlers
   const nameHandler=(e)=>{
     setFormData({...formData,name:e.target.value})
@@ -31,12 +31,12 @@ const cbHandler=(e)=>{
 const sendForm=async(e)=>{
     e.preventDefault()
     console.log(formData)
-    /*try{
-      axios.post("http://localhost:4000/votes/addvote",formData).then(e=>{alert(e.data)})
+    try{
+      axios.post("https://greydiveback.vercel.app/votes/addvot",formData).then(e=>{alert(e.data)})
     }
     catch(e){
       alert(e.data)
-    }*/
+    }
     setFormData({
     name:"",
     lastName:"",
@@ -46,8 +46,11 @@ const sendForm=async(e)=>{
     cb:""
     })
 }
-
+const resultsHandler=(e)=>{
+  navigate("/results")
+}
     return(<>
+    <h1>Formulario de encuesta para Grivedive</h1>
     <form onSubmit={sendForm}>
   <div class="form-row">
     <div class="form-group col-md-6">
@@ -95,5 +98,7 @@ const sendForm=async(e)=>{
   </div>
   <button type="submit" class="btn btn-primary">Enviar voto</button>
 </form>
+<h1>¿Quieres ver los resultados de esta encuesta?</h1>
+<button onClick={resultsHandler}>VER RESULTADOS</button>
     </>)
 }
