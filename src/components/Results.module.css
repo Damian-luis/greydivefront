@@ -15,6 +15,7 @@
 }
 .containerPrincipal{
     display: flex;
+    align-items: center;
 }
 .resultsPersons{
     width: 50%;

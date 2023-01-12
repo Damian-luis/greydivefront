@@ -13,14 +13,21 @@ export const Results=()=>{
     const getData=async()=>{
         const data=await axios.get("https://greydiveback.vercel.app/votes/getvotes").then(e=>{return e.data})
         setPersons(data.list);
+        
         let dataParaGrafico=[]
-        Object.keys(data.dataPerCountry).forEach(function(key, index) {
-            if(data.dataPerCountry[key]>0){
-                dataParaGrafico.push(data.dataPerCountry[key]);
-            }
+        
+        
+        
+        
+        Object.keys(data.dataPerCountry).forEach(function(key, index,values) {
+            
+           if(Object.values(data.dataPerCountry[key])>0){
+            let valor=Object.values(data.dataPerCountry[key])
+            dataParaGrafico.push(valor)
+           }
             
           });
-        
+       
         setDataGrafico({
             "cantidaDeVotos":data.ammounVotes,
             dataParaGrafico
@@ -49,7 +56,10 @@ export const Results=()=>{
     return(<>
     <div className={styles.container}>
         <div className={styles.containerResults}>
-    <h4>Resultados de la encuesta realizada:</h4>
+            <div>
+            <h4>Resultados de la encuesta realizada:</h4>
+            </div>
+    
     <div className={styles.containerPrincipal}>
 
     <div className={styles.resultsPersons}>

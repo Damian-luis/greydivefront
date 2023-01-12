@@ -4,6 +4,7 @@ import data from "../context/contextdata"
 import axios from "axios"
 import { useNavigate } from "react-router-dom";
 import styles from "./Form.module.css"
+import swal from 'sweetalert';
 export const Form=()=>{
 
   const {formData}=useContext(data)
@@ -32,10 +33,13 @@ const sendForm=async(e)=>{
     e.preventDefault()
     console.log(formData)
     try{
-      axios.post("https://greydiveback.vercel.app/votes/addvote",formData).then(e=>{alert(e.data)})
+      var data=await axios.post("https://greydiveback.vercel.app/votes/addvote",formData)
+      if(data.data.status===true){
+        swal(data.data.message);
+      }
     }
     catch(e){
-      alert(e.data)
+      swal(e.response.data.message)
     }
     setFormData({
     name:"",
