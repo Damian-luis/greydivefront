@@ -30,7 +30,7 @@ export const Results=()=>{
             labels:persons.map(e=>{return e.country}),
             datasets:[{
            label:"Porcentaje de paises que han votado",
-           data:[1,2],
+           data:dataParaGrafico,
            backgroundColor:["pink","blue","green","yellow"],
            borderColor:["#c7204f"]
        }]
