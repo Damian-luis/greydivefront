@@ -7,7 +7,7 @@ import { Chart as ChartJS } from "chart.js/auto";
 import { useState,useEffect } from "react";
 export const Results=()=>{
     let navigate = useNavigate(); 
-    const [dataGrafico,setDataGrafico] = useState()
+    const [dataGrafico,setDataGrafico] = useState(null)
     const [persons,setPersons]=useState([]);
     const [grafico,setGrafico] =useState(false)
     const getData=async()=>{
@@ -62,7 +62,7 @@ export const Results=()=>{
         </div>
 
         <div className={styles.data}>
-            <h4>Cantidad de votos conseguidos: {dataGrafico.cantidaDeVotos}</h4>
+        <h4>Cantidad de votos conseguidos: {dataGrafico!==null ? dataGrafico.cantidaDeVotos:<p>No se han podido conseguir los votos</p>}</h4>
             {grafico!==false?<Pie data={grafico}></Pie>:<p>Parece que aun no tienes registros</p>}
             
         
