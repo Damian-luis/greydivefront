@@ -1,0 +1,27 @@
+.container{
+    background-color:#bf00ff;
+    height: 100%;
+    display: flex;
+    justify-content:center
+}
+.containerForm{
+    background-color:white;
+    width: 35%;
+    padding: 30px;
+}
+.containerForm h4{
+    color:#bf00ff;
+    font-weight: bold;
+    font-size:30px
+}
+.button{
+    background-color:#bf00ff;
+    padding: 8px;
+    color: white;
+    border-radius: 5px;
+    border:none
+}
+.check{
+    width: 60%;
+    margin: 0 auto;
+}

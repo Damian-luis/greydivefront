@@ -3,7 +3,7 @@ import { useContext } from "react";
 import data from "../context/contextdata"
 import axios from "axios"
 import { useNavigate } from "react-router-dom";
- 
+import styles from "./Form.module.css"
 export const Form=()=>{
 
   const {formData}=useContext(data)
@@ -50,17 +50,20 @@ const resultsHandler=(e)=>{
   navigate("/results")
 }
     return(<>
-    <h1>Formulario de encuesta para Grivedive</h1>
+    <div className={styles.container}>
+      <div className={styles.containerForm}>
+    <h4>Formulario de encuesta para Grivedive</h4>
+    <p>LLene los campos guiados aqui abajo, podrá ver los resultados al final de la encuesta</p>
     <form onSubmit={sendForm}>
+      
   <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputEmail4">Nombre</label>
+    <div class="form-group col-md-12">
+      <label for="inputEmail4" >Nombre</label>
       <input type="text" class="form-control" id="inputEmail4" placeholder="Ingrese su nombre" onChange={nameHandler} value={formData.name}/>
-    </div>
-    <div class="form-group col-md-6">
       <label for="inputPassword4">Apellido</label>
       <input type="text" class="form-control" id="inputPassword4" placeholder="Ingrese su apellido" onChange={lastNameHandler} value={formData.lastName}/>
     </div>
+    
   </div>
   <div class="form-group">
     <label for="inputAddress">Correo electrónico</label>
@@ -71,7 +74,7 @@ const resultsHandler=(e)=>{
     <input type="date" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" onChange={birthDateHandler} value={formData.birthDate}/>
   </div>
   <div class="form-row">
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-12">
       <label for="inputCity">Pais</label>
       <select class="form-select" aria-label="Default select example" onChange={countryHandler} value={formData.country}>
   <option selected>Selecciona tu pais</option>
@@ -88,7 +91,7 @@ const resultsHandler=(e)=>{
     </div>
     
   </div>
-  <div class="form-group">
+  <div className={styles.check}>
     <div class="form-check">
       <input class="form-check-input" type="checkbox" id="gridCheck" onChange={cbHandler} value={formData.cb}/>
       <label class="form-check-label" for="gridCheck">
@@ -96,9 +99,11 @@ const resultsHandler=(e)=>{
       </label>
     </div>
   </div>
-  <button type="submit" class="btn btn-primary">Enviar voto</button>
+  <button type="submit" className={styles.button}>Enviar voto</button>
 </form>
-<h1>¿Quieres ver los resultados de esta encuesta?</h1>
-<button onClick={resultsHandler}>VER RESULTADOS</button>
+<h4>¿Quieres ver los resultados de esta encuesta?</h4>
+<button onClick={resultsHandler} className={styles.button}>VER RESULTADOS</button>
+</div>
+</div>
     </>)
 }
