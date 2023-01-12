@@ -62,7 +62,7 @@ export const Results=()=>{
         </div>
 
         <div className={styles.data}>
-            
+            <h4>Cantidad de votos conseguidos: {dataGrafico.cantidaDeVotos}</h4>
             {grafico!==false?<Pie data={grafico}></Pie>:<p>Parece que aun no tienes registros</p>}
             
         
